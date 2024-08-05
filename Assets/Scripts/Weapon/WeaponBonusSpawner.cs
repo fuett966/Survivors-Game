@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WeaponBonusSpawner : MonoBehaviour, IPaused
 {
-    public WeaponData[] weaponDataArray;
-    public GameObject weaponBonusPrefab;
-    public PlayerController player;
-    public float spawnInterval = 10f;
+    [SerializeField] private WeaponData[] weaponDataArray;
+    [SerializeField] private GameObject weaponBonusPrefab;
+    [SerializeField] private PlayerController player;
+    [SerializeField] private float spawnInterval = 10f;
     private Camera mainCamera;
 
     public bool IsPaused { get; set; }
@@ -64,7 +64,7 @@ public class WeaponBonusSpawner : MonoBehaviour, IPaused
     private WeaponData GetRandomWeaponExcludingCurrent()
     {
         List<WeaponData> availableWeapons = new List<WeaponData>(weaponDataArray);
-        availableWeapons.RemoveAll(w => w.weaponName == player.currentWeapon.weaponData.weaponName);
+        availableWeapons.RemoveAll(w => w.weaponName == player.CurrentWeapon.weaponData.weaponName);
         return availableWeapons[Random.Range(0, availableWeapons.Count)];
     }
     public void OnPause()

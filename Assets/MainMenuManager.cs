@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private void Start()
     {

@@ -10,7 +10,7 @@ public class SlowZone : AbstractDangerZone
         PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
         {
-            playerController.moveSpeed *= slowAmount;
+            playerController.MultiplySpeed(slowAmount);
         }
     }
 
@@ -31,7 +31,7 @@ public class SlowZone : AbstractDangerZone
             PlayerController playerController = other.GetComponent<PlayerController>();
             if (playerController != null)
             {
-                playerController.moveSpeed /= slowAmount; 
+                playerController.DecreaseSpeed(slowAmount); 
             }
         }
     }

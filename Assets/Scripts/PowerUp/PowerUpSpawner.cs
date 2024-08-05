@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour, IPaused
 {
-    public GameObject[] powerUpPrefabs;
-    public float spawnInterval = 27f;
-    public float powerUpDuration = 10f;
+    [SerializeField] private GameObject[] powerUpPrefabs;
+    [SerializeField] private float spawnInterval = 27f;
+    [SerializeField] private float powerUpDuration = 10f;
 
     private Camera mainCamera;
 

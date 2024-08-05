@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public float followSpeed = 2f; 
+    [SerializeField] private Transform target;
+    [SerializeField] private float followSpeed = 2f; 
 
-    public Vector2 minBounds;
-    public Vector2 maxBounds;
+    [SerializeField] private Vector2 minBounds;
+    [SerializeField] private Vector2 maxBounds;
 
     private void LateUpdate()
     {

@@ -10,13 +10,13 @@ public struct ZoneData
 }
 public class ZoneGenerator : MonoBehaviour
 {
-    public List<ZoneData> zoneDataList; // Список данных о зонах
-    public float minDistanceBetweenZones = 3f; // Минимальное расстояние между зонами
-    public float minDistanceFromEdge = 3f; // Минимальное расстояние от краев карты
+    [SerializeField] private List<ZoneData> zoneDataList;
+    [SerializeField] private float minDistanceBetweenZones = 3f;
+    [SerializeField] private float minDistanceFromEdge = 3f;
 
     // Границы карты
-    public Vector2 minBounds;
-    public Vector2 maxBounds;
+    [SerializeField] private Vector2 minBounds;
+    [SerializeField] private Vector2 maxBounds;
 
     private List<Vector3> generatedZones = new List<Vector3>();
 

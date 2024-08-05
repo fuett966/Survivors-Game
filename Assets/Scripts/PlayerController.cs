@@ -3,16 +3,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IPaused,IDamagable
 {
-    public float moveSpeed = 4f;
-    public float rotationSpeed = 180f;
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float rotationSpeed = 180f;
 
-    public Transform weaponHolder;
+    [SerializeField] private Transform weaponHolder;
 
     private Camera mainCamera;
     private CharacterController characterController;
 
-    public WeaponData startWeapon;
-    public Weapon currentWeapon;
+    [SerializeField] private WeaponData startWeapon;
+    [SerializeField] private Weapon currentWeapon;
+
+    public Weapon CurrentWeapon { get { return currentWeapon; } }
 
     private IHealth health;
 
