@@ -8,18 +8,22 @@ public class PauseManager : MonoBehaviour
     public static Action OnGamePaused;
     public static Action OnGameResumed;
 
-    private bool isPaused = false;
+    private bool _isPaused = false;
 
-    //в случае появления нового обьекта зависящего от паузы нужно запросить статус менеджера и становить новому обьекту
+    private void OnEnable()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<IHealth>().Died += PauseGame;
+    }
+
     public void PauseGame()
     {
-        isPaused = true;
+        _isPaused = true;
         OnGamePaused?.Invoke();
     }
 
     public void ResumeGame()
     {
-        isPaused = false;
+        _isPaused = false;
         OnGameResumed?.Invoke();
     }
 }

@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour, IPaused,IDamagable
 
     private void Rotate()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        /*Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
 
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour, IPaused,IDamagable
 
             Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
+        }*/
     }
 
 

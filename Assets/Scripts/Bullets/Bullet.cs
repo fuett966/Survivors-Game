@@ -21,11 +21,19 @@ public class Bullet : MonoBehaviour, IPaused
 
     protected virtual void Update()
     {
+        if (IsPaused)
+        {
+            return;
+        }
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        if (IsPaused)
+        {
+            return;
+        }
         if (!other.TryGetComponent<IDamagable>(out var target))
             return;
         target.TakeDamage(damage);
@@ -36,11 +44,23 @@ public class Bullet : MonoBehaviour, IPaused
 
     public void OnPause()
     {
-        throw new System.NotImplementedException();
+        IsPaused = true;
     }
 
     public void OnResume()
     {
-        throw new System.NotImplementedException();
+        IsPaused = false;
+    }
+    void OnEnable()
+    {
+        PauseManager.OnGamePaused += OnPause;
+        PauseManager.OnGameResumed += OnResume;
+
+    }
+
+    void OnDisable()
+    {
+        PauseManager.OnGamePaused -= OnPause;
+        PauseManager.OnGameResumed -= OnResume;
     }
 }

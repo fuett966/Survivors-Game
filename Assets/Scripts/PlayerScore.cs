@@ -25,7 +25,7 @@ public class PlayerScore : MonoBehaviour
     public void AddScore(int value)
     {
         score += value;
-        ScoreChanged.Invoke(score, false);
+        ScoreChanged?.Invoke(score, false);
     }
     public void FinishGame()
     {
@@ -36,11 +36,11 @@ public class PlayerScore : MonoBehaviour
             PlayerDataManager.instance.playerData.score = score;
             PlayerDataManager.instance.SavePlayerData(PlayerDataManager.instance.playerData);
 
-            ScoreChanged.Invoke(score, true);
+            ScoreChanged?.Invoke(score, true);
         }
         else
         {
-            ScoreChanged.Invoke(score, false);
+            ScoreChanged?.Invoke(score, false);
         }
         pauseManager.PauseGame();
     }

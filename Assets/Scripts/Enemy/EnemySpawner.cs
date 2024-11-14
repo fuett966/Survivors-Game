@@ -31,13 +31,22 @@ public class EnemySpawner : MonoBehaviour, IPaused
 
     IEnumerator SpawnEnemies()
     {
-        while (!IsPaused)
+        float _timeToSpawn = currentSpawnRate;
+        while (true)
         {
-            yield return new WaitForSeconds(currentSpawnRate);
-            if (IsPaused)
+            //yield return new WaitForSeconds(currentSpawnRate);
+            yield return new WaitUntil(() => { return !IsPaused;});
+
+            if (_timeToSpawn >= 0)
             {
+                _timeToSpawn -= Time.deltaTime;
                 continue;
             }
+            else
+            {
+                _timeToSpawn = currentSpawnRate;
+            }
+            
             if (spawnTimer >= 10f)
             {
                 spawnTimer = 0f;
@@ -129,6 +138,5 @@ public class EnemySpawner : MonoBehaviour, IPaused
     {
         PauseManager.OnGamePaused -= OnPause;
         PauseManager.OnGameResumed -= OnResume;
-
     }
 }

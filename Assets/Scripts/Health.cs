@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IHealth
@@ -59,5 +60,10 @@ public class Health : MonoBehaviour, IHealth
     {
         _value = 0;
         Die();
+    }
+
+    public void SetInvincible(float time)
+    {
+        
     }
 }
